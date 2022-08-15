@@ -4,7 +4,11 @@ from fontMenu import fontMenu
 from replaceMenu import replaceMenu
 
 def saveAs():
-    filepath = asksaveasfilename(defaultextension="txt", filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
+    filepath = asksaveasfilename(
+        defaultextension="txt",
+        filetypes = [("Text Files", "*.txt"),
+        ("All Files", "*.*")]
+    )
 
     if not filepath:
         return
@@ -21,6 +25,7 @@ def openFile():
         title = "Open Text File",
         filetypes = (("Text Files", "*.txt"),)
     )
+
     tf = open(tf)
     data = tf.read()
     textbox.insert(END, data)
@@ -57,8 +62,10 @@ menu.add_cascade(label = 'File', menu = filemenu)
 filemenu.add_command(label = 'New', accelerator = "Ctrl+N")
 filemenu.add_command(label = 'New Window', accelerator = 'Ctrl+Shift+N')
 filemenu.add_command(label = 'Open...', accelerator = 'Ctrl+O', command = openFile)
+root.bind('<Control-o>', lambda event: openFile())
 filemenu.add_command(label = 'Save', accelerator = 'Ctrl+S')
 filemenu.add_command(label = 'Save As', accelerator = 'Ctrl+Shift+S', command = saveAs)
+root.bind("<Control-Shift-S>", lambda event: saveAs())
 filemenu.add_separator()
 filemenu.add_command(label = 'Page Setup...')
 filemenu.add_command(label = 'Print', accelerator = 'Ctrl+P')
