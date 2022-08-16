@@ -2,7 +2,9 @@ from tkinter import *
 from tkinter.filedialog import *
 from fontMenu import fontMenu
 from replaceMenu import replaceMenu
+from aboutNotepad import about
 from fileOptions import *
+import webbrowser
 
 root = Tk()
 
@@ -64,7 +66,6 @@ editmenu.add_separator()
 editmenu.add_command(label = 'Select All', accelerator = 'Ctrl+A')
 editmenu.add_command(label = 'Time/Date', accelerator = 'F5')
 
-
 formatmenu = Menu(menu, tearoff = 0)
 menu.add_cascade(label = 'Format', menu = formatmenu)
 formatmenu.add_radiobutton(label = 'Word Wrap')
@@ -79,12 +80,11 @@ zoommenu.add_command(label = 'Zoom out', accelerator = 'Ctrl+Minus')
 zoommenu.add_command(label = 'Restore Default Zoom', accelerator = 'Ctrl+0')
 viewmenu.add_checkbutton(label = 'Check Status')
 
-
 helpmenu = Menu(menu, tearoff = 0)
 menu.add_cascade(label = 'Help', menu = helpmenu)
-helpmenu.add_command(label = 'View Help')
+helpmenu.add_command(label = 'View Help', command = lambda: webbrowser.open("https://www.google.com/search?q=get help with notepad in windows"))
 helpmenu.add_command(label = 'Send Feedback')
 helpmenu.add_separator()
-helpmenu.add_command(label = 'About Notepad')
+helpmenu.add_command(label = 'About Notepad', command = about)
 
 root.mainloop()
