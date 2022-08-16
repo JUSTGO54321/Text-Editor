@@ -12,13 +12,13 @@ def fontMenu ():
     fontFrame.grid(column = 0, row = 0)
 
     font = Label(fontFrame, text = "Font:") 
-    font.pack(side = "top", fill = "both")
+    font.pack(side = TOP, anchor = W)
 
     fontEntry = Entry(fontFrame)
-    fontEntry.pack(side = "top", fill = "both")
+    fontEntry.pack(side = TOP, fill = BOTH)
     
     fontList = Listbox(fontFrame)
-    fontList.pack(side = "left", fill = "both")
+    fontList.pack(side = LEFT, fill = BOTH)
 
     fontList_yscroll = Scrollbar(fontFrame, orient = "vertical", command = fontList.yview)
     fontList_yscroll.pack(side = "right", fill = "both")
@@ -29,7 +29,7 @@ def fontMenu ():
     fontStyleFrame.grid(column = 1, row = 0)
 
     fontStyle = Label(fontStyleFrame, text = "Font Style:")
-    fontStyle.pack(side = TOP, fill = BOTH)
+    fontStyle.pack(side = TOP, anchor = W)
 
     fontStyleEntry = Entry(fontStyleFrame)
     fontStyleEntry.pack(side = TOP, fill = BOTH)
@@ -46,7 +46,7 @@ def fontMenu ():
     fontSizeFrame.grid(column = 2, row = 0)
 
     fontSize = Label(fontSizeFrame, text = "Font Size:")
-    fontSize.pack(side = TOP, fill = BOTH)
+    fontSize.pack(side = TOP, anchor = W)
     fontSizeEntry = Entry(fontSizeFrame)
     fontSizeEntry.pack(side = TOP, fill = BOTH)
     fontSizeList = Listbox(fontSizeFrame)
