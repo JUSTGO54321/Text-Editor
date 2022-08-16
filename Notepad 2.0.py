@@ -2,34 +2,7 @@ from tkinter import *
 from tkinter.filedialog import *
 from fontMenu import fontMenu
 from replaceMenu import replaceMenu
-
-def saveAs():
-    filepath = asksaveasfilename(
-        defaultextension="txt",
-        filetypes = [("Text Files", "*.txt"),
-        ("All Files", "*.*")]
-    )
-
-    if not filepath:
-        return
-
-    with open(filepath, "w") as output_file:
-        text = textbox.get(1.0, END)
-        output_file.write(text)
-
-    root.title(f"Entitled - {filepath}")
-
-def openFile():
-    tf = askopenfilename(
-        initialdir = "C:/Users/pgao2/",
-        title = "Open Text File",
-        filetypes = (("Text Files", "*.txt"),)
-    )
-
-    tf = open(tf)
-    data = tf.read()
-    textbox.insert(END, data)
-    tf.close()
+from fileOptions import *
 
 root = Tk()
 
@@ -61,16 +34,16 @@ filemenu = Menu(menu, tearoff = 0)
 menu.add_cascade(label = 'File', menu = filemenu)
 filemenu.add_command(label = 'New', accelerator = "Ctrl+N")
 filemenu.add_command(label = 'New Window', accelerator = 'Ctrl+Shift+N')
-filemenu.add_command(label = 'Open...', accelerator = 'Ctrl+O', command = openFile)
-root.bind('<Control-o>', lambda event: openFile())
+filemenu.add_command(label = 'Open...', accelerator = 'Ctrl+O', command = lambda: openFile(root, textbox))
+root.bind('<Control-o>', lambda event: openFile(root, textbox))
 filemenu.add_command(label = 'Save', accelerator = 'Ctrl+S')
-filemenu.add_command(label = 'Save As', accelerator = 'Ctrl+Shift+S', command = saveAs)
-root.bind("<Control-Shift-S>", lambda event: saveAs())
+filemenu.add_command(label = 'Save As', accelerator = 'Ctrl+Shift+S', command = lambda: saveAs(root, textbox))
+root.bind("<Control-Shift-S>", lambda event: saveAs(root, textbox))
 filemenu.add_separator()
 filemenu.add_command(label = 'Page Setup...')
 filemenu.add_command(label = 'Print', accelerator = 'Ctrl+P')
 filemenu.add_separator()
-filemenu.add_command(label = 'Exit', command=root.quit)
+filemenu.add_command(label = 'Exit', command = root.quit)
 
 editmenu = Menu(menu, tearoff = 0)
 menu.add_cascade(label = 'Edit', menu = editmenu)
