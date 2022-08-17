@@ -5,7 +5,7 @@ def replaceMenu ():
     replaceMenu.geometry("370x150")
     replaceMenu.title("Replace")
     replaceMenu.resizable(False, False)
-    replaceMenu.grab_set
+    replaceMenu.attributes('-topmost', True)
 
     find = Label(replaceMenu, text = "Find:")
     find.grid(column = 0, row = 0)
@@ -16,7 +16,7 @@ def replaceMenu ():
     replaceWith.grid(column = 0, row = 1)
     replaceWithEntry = Entry(replaceMenu)
     replaceWithEntry.grid(column = 1, row = 1)
-
+    
     matchCase = Checkbutton(replaceMenu, text = "Match case")
     matchCase.grid(column = 0, row = 2)
 
