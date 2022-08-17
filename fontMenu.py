@@ -1,25 +1,35 @@
 from tkinter import *
+from tkinter import font
 
+def populate(fontList):
+    fonts = list(font.families())
+    fonts = [item for item in fonts if "@" not in item]
+    fonts.sort()
+    for item in fonts:
+        fontList.insert(END, item)
+        
 def fontMenu ():
     fontMenu = Toplevel()
     fontMenu.geometry("430x450")
     fontMenu.title("Font")
     fontMenu.resizable(False, False)
     fontMenu.grab_set()
-    
+    fontMenu.attributes('-topmost', True)
+
     #font
     fontFrame = Frame(fontMenu)
     fontFrame.grid(column = 0, row = 0)
 
-    font = Label(fontFrame, text = "Font:") 
-    font.pack(side = TOP, anchor = W)
+    fontLabel = Label(fontFrame, text = "Font:") 
+    fontLabel.pack(side = TOP, anchor = W)
 
     fontEntry = Entry(fontFrame)
     fontEntry.pack(side = TOP, fill = BOTH)
     
     fontList = Listbox(fontFrame)
     fontList.pack(side = LEFT, fill = BOTH)
-
+    populate(fontList)
+     
     fontList_yscroll = Scrollbar(fontFrame, orient = "vertical", command = fontList.yview)
     fontList_yscroll.pack(side = "right", fill = "both")
     fontList.configure(yscrollcommand = fontList_yscroll.set)
@@ -49,7 +59,7 @@ def fontMenu ():
     fontSize.pack(side = TOP, anchor = W)
     fontSizeEntry = Entry(fontSizeFrame)
     fontSizeEntry.pack(side = TOP, fill = BOTH)
-    fontSizeList = Listbox(fontSizeFrame)
+    fontSizeList = Listbox(fontSizeFrame, selectmode = SINGLE)
     fontSizeList.pack(side = LEFT, fill = BOTH)
 
     fontSizeList_yscroll = Scrollbar(fontSizeFrame, orient = "vertical", command = fontSizeList.yview)
