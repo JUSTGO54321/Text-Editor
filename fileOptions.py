@@ -4,7 +4,7 @@ import os
 
 def openFile(root, textbox):
     filepath = askopenfilename(
-        initialdir = "C:/Users/pgao2/",
+        initialdir = "C:/Users/",
         title = "Open Text File",
         filetypes = (("Text Files", "*.txt"),)
     )

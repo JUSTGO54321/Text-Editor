@@ -7,13 +7,14 @@ def populate(fontList):
     fonts.sort()
     for item in fonts:
         fontList.insert(END, item)
-        
+
 def fontMenu ():
     fontMenu = Toplevel()
     fontMenu.geometry("430x450")
     fontMenu.title("Font")
     fontMenu.resizable(False, False)
     fontMenu.grab_set()
+    fontMenu.focus_set()
     fontMenu.attributes('-topmost', True)
 
     #font
@@ -73,3 +74,8 @@ def fontMenu ():
     sampleFrame.grid(column = 1, row = 4)
     sampleText = Label(sampleFrame, text = "AaBbYyZz")
     sampleText.pack()
+
+    selectedIndex = fontList.curselection()
+    print (selectedIndex)
+
+    fontMenu.mainloop()
